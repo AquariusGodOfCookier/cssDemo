@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+            background-color: wheat;
+        }
+        #canvas{
+            position: absolute;
+        }
+        .ability{
+            width: 200px;
+            height: 100%;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+           justify-content: space-around;
+        }
+        .ability p{
+            background-color: #425066;
+            height: 40px;
+            width: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            font-size: 20px;
+            border-radius: 30px 30px 0px 0px;
+        }
+        .ability input{
+            height: 40px;
+            width: 98%;
+            font-size: 22px;
+            border: none;
+        }
+        .bu{
+            color: white;
+            background-color: green;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="ability">
+        <div>
+            <p>击杀</p>
+            <input type="number" class="kill">
+        </div>
+        <div>
+            <p>魔法</p>
+            <input type="number" class="magic" >
+        </div>
+        <div>
+            <p>生存</p>
+            <input type="number" class="live">
+        </div>
+        <div>
+            <p>金钱</p>
+            <input type="number" class="money">
+        </div>
+        <div>
+            <p>助攻</p>
+            <input type="number" class="assists">
+        </div>
+        <div>
+            <p>防御</p>
+            <input type="number" class="defense">
+        </div>
+        <div>
+            <p></p>
+            <input type="button" value="图像生成" class="bu" onclick="img_generation()">
+        </div>
+    </div>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width = window.innerWidth - 200;
+        var ch = canvas.height = window.innerHeight;
+        ctx.fillStyle = 'wheat';
+        ctx.fillRect(0, 0, cw, ch);
+        var img_generation=function(){
+            ctx.clearRect(0,0,cw,ch); //每次点击的时候都重新生成一个画布，把原画布删除
+           draw();
+            var kill_data = document.getElementsByClassName('kill')[0].value;
+            var magic_data = document.getElementsByClassName('magic')[0].value;
+            var live_data = document.getElementsByClassName('live')[0].value;
+            var money_data = document.getElementsByClassName('money')[0].value;
+            var assists_data = document.getElementsByClassName('assists')[0].value;
+            var defense_data = document.getElementsByClassName('defense')[0].value;
+            if(kill_data>=0&&kill_data<=10&&magic_data>=0&&magic_data<=10&&live_data>=0&&live_data<=10&&money_data>=0&&money_data<=10&&assists_data>=0&&assists_data<=10&&defense_data>=0&&defense_data<=10)
+            {
+                draw_ability(kill_data,magic_data,live_data,money_data,assists_data,defense_data);
+            }
+            else{
+                alert('您输入的数据有误');
+            }
+            
+            
+        }
+        var draw_ability=function(a,b,c,d,e,f)
+        {
+            var x = cw / 2;
+            var y = ch / 2;
+            console.log(a,b,c,d,e,f);
+            var kill_data_length= a/10*300;
+            var magic_data_length=b/10*300;
+            var live_data_length=c/10*300;
+            var money_data_length = d/10*300;
+            var assists_data_length = e/10*300;
+            var defense_data_length =  f/10*300;
+            ctx.beginPath();
+            ctx.lineWidth = '3';
+            ctx.lineCap='round';
+            ctx.strokeStyle='red';
+            ctx.moveTo(x+kill_data_length/2,y-(kill_data_length/2)*Math.sqrt(3));
+            ctx.lineTo(x+magic_data_length,y);
+            ctx.lineTo(x+live_data_length/2,y+(live_data_length/2)*Math.sqrt(3));
+            ctx.lineTo(x-money_data_length/2,y+(money_data_length/2)*Math.sqrt(3));
+            ctx.lineTo(x-assists_data_length,y);
+            ctx.lineTo(x-defense_data_length/2,y-(defense_data_length/2)*Math.sqrt(3));
+            ctx.closePath();
+            ctx.stroke();
+        }
+        var draw = function () {
+            var x = cw / 2;
+            var y = ch / 2;
+            //画下面三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x, y + 2);
+            ctx.lineTo(x - 150, y + 2 + 150 * Math.sqrt(3));
+            ctx.lineTo(x + 150, y + 2 + 150 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = "#70f3ff";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x, y + 2);
+            ctx.lineTo(x - 100, y + 2 + 100 * Math.sqrt(3));
+            ctx.lineTo(x + 100, y + 2 + 100 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = "#44cef6";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x, y + 2);
+            ctx.lineTo(x - 50, y + 2 + 50 * Math.sqrt(3));
+            ctx.lineTo(x + 50, y + 2 + 50 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = "#065279";
+            ctx.fill();
+            //画上面三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x, y - 2);
+            ctx.lineTo(x - 150, y - 2 - 150 * Math.sqrt(3));
+            ctx.lineTo(x + 150, y - 2 - 150 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = '#70f3ff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x, y - 2);
+            ctx.lineTo(x - 100, y - 2 - 100 * Math.sqrt(3));
+            ctx.lineTo(x + 100, y - 2 - 100 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = '#44cef6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x, y - 2);
+            ctx.lineTo(x - 50, y - 2 - 50 * Math.sqrt(3));
+            ctx.lineTo(x + 50, y - 2 - 50 * Math.sqrt(3));
+            ctx.closePath();
+            ctx.fillStyle = '#065279';
+            ctx.fill();
+
+            //画右下三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y + 1);
+            ctx.lineTo(x + 3 + 150, y + 1 + 150 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 300, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#70f3ff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y + 1);
+            ctx.lineTo(x + 3 + 100, y + 1 + 100 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 200, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#44cef6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y + 1);
+            ctx.lineTo(x + 3 + 50, y + 1 + 50 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 100, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#065279';
+            ctx.fill();
+            //画右上三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y - 1);
+            ctx.lineTo(x + 3 + 150, y - 1 - 150 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 300, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#70f3ff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y - 1);
+            ctx.lineTo(x + 3 + 100, y - 1 - 100 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 200, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#44cef6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x + 3, y - 1);
+            ctx.lineTo(x + 3 + 50, y - 1 - 50 * Math.sqrt(3));
+            ctx.lineTo(x + 3 + 100, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#065279';
+            ctx.fill();
+
+            //画左上三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y - 1);
+            ctx.lineTo(x - 3 - 150, y - 1 - 150 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 300, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#70f3ff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y - 1);
+            ctx.lineTo(x - 3 - 100, y - 1 - 100 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 200, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#44cef6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y - 1);
+            ctx.lineTo(x - 3 - 50, y - 1 - 50 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 100, y - 1);
+            ctx.closePath();
+            ctx.fillStyle = '#065279';
+            ctx.fill();
+
+            //画左下三个三角形
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y + 1);
+            ctx.lineTo(x - 3 - 150, y + 1 + 150 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 300, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#70f3ff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y + 1);
+            ctx.lineTo(x - 3 - 100, y + 1 + 100 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 200, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#44cef6';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(x - 3, y + 1);
+            ctx.lineTo(x - 3 - 50, y + 1 + 50 * Math.sqrt(3));
+            ctx.lineTo(x - 3 - 100, y + 1);
+            ctx.closePath();
+            ctx.fillStyle = '#065279';
+            ctx.fill();
+
+            //写文字
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('击杀', x + 150, y - 2 - 150 * Math.sqrt(3)-20);
+
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('魔法', x + 3 + 300+20, y - 1+10);
+
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('生存',x + 150, y + 1 + 150 * Math.sqrt(3)+40+5);
+
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('金钱', x - 150-70, y + 1 + 150 * Math.sqrt(3)+40+5);
+
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('助攻', x - 3 - 300-95, y + 1+10);
+
+            ctx.fillStyle="black";
+            ctx.font='40px 楷体'
+            ctx.fillText('防御', x - 150-70, y - 2 - 150 * Math.sqrt(3)-20);
+           
+            ctx.fillStyle="blue";
+            ctx.font='20px 宋体';
+            ctx.fillText("请输入0-10之间的数字，代表功能的大小！",x-170,20)
+
+        }
+        draw();
+    </script>
+</body>
+
+</html>

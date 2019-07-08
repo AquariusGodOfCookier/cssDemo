@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var cw = canvas.width = window.innerWidth;
+    var ch = canvas.height = window.innerHeight-4;
+
+    var init = function () { 
+        this.r = Math.random()*255;
+        this.g = Math.random()*255;
+        this.b = Math.random()*255;
+        this.x = Math.random() * cw;
+        this.y = 0;
+        this.speed = Math.random() * 5 + 25;
+        this.add = function () {
+            this.y += this.speed;
+        }
+        this.color = "rgb("+this.r+","+this.g+","+this.b+")";
+        this.reset = function () {
+            this.y = 0;
+            this.x = Math.random() * cw;
+        }
+        this.shuzi = Math.floor(Math.random()*26);
+    }
+    var arr = [];
+    var shuzi = Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+    for (var i = 0; i < 20; i++) {
+        arr.push(new init());
+    }
+    console.log(arr);
+    setInterval(function () {
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fillRect(0, 0, cw, ch);
+        for (var i = 0; i < arr.length; i++) {
+            ctx.fillStyle = arr[i].color;
+            ctx.font = '30px 微软雅黑';
+            ctx.fillText(shuzi[arr[i].shuzi], arr[i].x, arr[i].y);
+            arr[i].add();
+            if (arr[i].y > ch - 10) {
+                arr[i].reset();
+            }
+        }
+
+    }, 1000 / 60);
+</script>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background-color: rgb(220, 220, 220);
+        }
+
+        ul {
+            width: 100%;
+            height: 400px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        li {
+            height: 400px;
+            width: 250px;
+            background-color: white;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        li:hover .info {
+            transform: translateY(-80px);
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.7);
+        }
+
+        .discount {
+            width: 80px;
+            height: 30px;
+            background-color: red;
+            margin: 0px auto;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+
+        }
+
+        img {
+            width: 100%;
+            height: 200px;
+            margin-top: 30px;
+        }
+
+        .text {
+            width: 100%;
+            height: 130px;
+
+        }
+
+        .span1 {
+            height: 25px;
+            width: 100%;
+            text-align: center;
+            line-height: 25px;
+            display: inline-block;
+        }
+
+        .p {
+            font-size: 12px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.5)
+        }
+
+        .span2 {
+            display: inline-block;
+            height: 15px;
+            width: 100%;
+            text-align: center;
+            color: red;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        del {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .info {
+
+            background-color: red;
+            width: 100%;
+            height: 80px;
+            transition: 0.3s all;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            margin-top: 5px;
+
+        }
+
+        .info p {
+            color: white;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="discount">
+                享9.5折
+            </div>
+            <img src="../img/pms_1524621350.77238418!220x220.jpg" alt="">
+            <div class="text">
+                <span class="span1">小米6x 6GB+128GB</span>
+                <p class="p">轻薄美观的拍照手机</p>
+                <span class="span2">
+                    4555 <del>4888</del>
+                </span>
+            </div>
+            <div class="info">
+                <p>质量不错</p>
+            </div>
+        </li>
+        <li>
+            <div class="discount">
+                享9.5折
+            </div>
+            <img src="../img/pms_1537324004.08544830!220x220.jpg" alt="">
+            <div class="text">
+                <span class="span1">小米8青春版</span>
+                <p class="p">潮流镜面渐变色，2400万自拍旗舰</p>
+                <span class="span2">
+                    1499元 <del> 1699元</del>
+                </span>
+            </div>
+            <div class="info">
+                <p>质量不错</p>
+            </div>
+        </li>
+        <li>
+            <div class="discount">
+                享9.5折
+            </div>
+            <img src="../img/pms_1527735163.02784072!220x220.jpg" alt="">
+            <div class="text">
+                <span class="span1">小米8</span>
+                <p class="p">相机全新升级，960帧超慢动作</p>
+                <span class="span2">
+                    2599元 <del>2999元</del>
+                </span>
+            </div>
+            <div class="info">
+                <p>质量不错</p>
+            </div>
+        </li>
+        <li>
+            <div class="discount">
+                享9.5折
+            </div>
+            <img src="../img/pms_1528718738.78643039!220x220.jpg" alt="">
+            <div class="text">
+
+
+
+
+                <span class="span1">小米MIX 2S 8GB+256GB</span>
+                <p class="p">骁龙845 年度旗舰处理器，艺术品般陶瓷机身</p>
+                <span class="span2">
+                    3399元 <del> 3999元</del>
+                </span>
+            </div>
+            <div class="info">
+                <p>质量不错</p>
+            </div>
+        </li>
+    </ul>
+</body>
+
+</html>

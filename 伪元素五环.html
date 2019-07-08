@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        ul {
+            position: relative;
+        }
+
+        li {
+            list-style: none;
+            height: 12em;
+            width: 12em;
+            position: absolute;
+    
+        }
+
+        li::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 1.4em solid red;
+            border-radius: 6em;
+            box-sizing: border-box;
+        }
+
+        li:nth-child(1) {
+            top: 0em;
+            left: 0em;
+        }
+        li:nth-child(1)::after{
+            border-color: blue;
+        }
+        li:nth-child(2)::after{
+            border-color: yellow;
+        }
+        li:nth-child(3)::after{
+            border-color: black;
+        }
+        li:nth-child(4)::after{
+            border-color: green;
+        }
+        li:nth-child(5)::after{
+            border-color: red;
+        }
+        li:nth-child(2) {
+            top: 5.7em;
+            left: 6.8em;
+        }
+
+        li:nth-child(3) {
+            top: 0em;
+            left: 13.6em;
+        }
+
+        li:nth-child(4) {
+            top: 5.7em;
+            left: 20.4em;
+        }
+
+        li:nth-child(5) {
+            top: 0em;
+            left: 27.2em;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

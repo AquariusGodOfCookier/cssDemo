@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var cw = canvas.width = window.innerWidth;
+    var ch = canvas.height = window.innerHeight - 4;
+    console.log(cw, ch);
+    var direction_x = new Array();
+    var direction_y = new Array();
+    var changestart = function(){
+        for (var i = 0; i < 20; i++) {
+             direction_x[i] = Math.random() * (cw - 200);
+             direction_y[i] = Math.random() * ch / 3 - 50;
+  
+            
+        }
+    }
+  changestart();
+    var draw_start=function(){
+      for(var i=0;i<20;i++)
+      {
+          var start_i = new start(direction_x[i],direction_y[i],20,'yellow');
+      }
+    }
+            
+               console.log(direction_x,direction_y);
+        
+    var beijing = function () {
+        context.beginPath();
+        context.fillStyle = 'black'; //黑夜
+        context.fillRect(0, 0, cw, (2 * ch) / 5);
+        context.closePath();
+        context.beginPath();
+        context.fillStyle = 'wheat'; //地面
+        context.fillRect(0, ch / 3, cw, ch);
+        context.closePath();
+        context.beginPath();
+        context.arc(cw - 200, 100, 50, 0, 2 * Math.PI, true);
+        context.fillStyle = '#EEE5DE'; //弯月
+        context.fill();
+        context.closePath();
+
+        context.beginPath();
+        context.arc(cw - 220, 70, 50, 0, 2 * Math.PI, true);
+        context.fillStyle = 'black';
+        context.fill();
+        context.closePath();
+        draw_house();
+        draw_start();
+
+    }
+
+   var start = function(x, y, h, g) {
+        //五角星边的长度为50px，x1、h1为五角星的底部点坐标偏差值，x2、h2为五角星上部点偏差值
+        context.beginPath();
+        var x1 = h * Math.sin(Math.PI / 10);
+        var h1 = h * Math.cos(Math.PI / 10);
+        var x2 = h / 2;
+        var h2 = h / 2 * Math.tan(Math.PI / 5);
+        context.moveTo(x, y);
+        context.lineTo(x + x1, y + h1);
+        context.lineTo(x - x2, y + h2);
+        context.lineTo(x + x2, y + h2);
+        context.lineTo(x - x1, y + h1);
+        context.lineTo(x - x1, y + h1);
+        context.lineTo(x, y);
+        context.fillStyle = g;
+        context.fill();
+        context.closePath();
+
+    }
+
+    var draw_window = function (x, y, high) {
+        const start_x = x - 40;
+        const start_y = y + 70;
+
+        //画窗户
+        context.beginPath();
+        context.fillStyle = 'black';
+        context.fillRect(start_x, start_y, high, high);
+        context.closePath();
+        context.beginPath();
+        //画整体的黑色窗户上的两个东西
+        context.fillStyle = 'rgb(232,188,11)';
+        context.fillRect(start_x, y + 105, high, high / 8);
+        context.fillRect(x - 5, y + 70, 10, 80);
+        context.closePath();
+        context.beginPath();
+        //画左侧的打开窗户
+        context.fillStyle = 'rgb(210,159,100)';
+        context.fillRect(x - 80, y + 70, 40, 80);
+        context.fill();
+        context.fillStyle = '#CD2626';
+        context.fillRect(x - 75, y + 75, 30, 30);
+        context.fillRect(x - 75, y + 110, 30, 30);
+        context.fill();
+        //画右侧打开窗户
+        context.fillStyle = 'rgb(210,159,100)'; //窗户表框
+        context.fillRect(x + 40, y + 70, 40, 80);
+        context.fill();
+        context.fillStyle = '#CD2626'; //窗户里面
+        context.fillRect(x + 40 + 5, y + 75, 30, 30);
+        context.fillRect(x + 40 + 5, y + 110, 30, 30);
+        context.fill();
+        //画阳台
+        context.fillStyle = 'rgb(210,159,100)'; //阳台上部分
+        context.fillRect(x - 40, y + 150, 80, 10)
+        context.fillStyle = '#CD2626' //阳台下部分
+        context.fillRect(x - 40, y + 160, 80, 5);
+        context.moveTo(x - 40, y + 160);
+        context.lineTo(x - 45, y + 160);
+        context.lineTo(x - 40, y + 165);
+        context.moveTo(x - 40 + 85, y + 160);
+        context.lineTo(x + 85 - 45, y + 160);
+        context.lineTo(x + 80 - 40, y + 165);
+        context.fill();
+
+        context.beginPath();
+        context.fillStyle = 'rgb(210,159,100)';
+        context.moveTo(start_x, start_y + 80);
+        context.lineTo(start_x, start_y + 90);
+        context.lineTo(start_x - 5, start_y + 90);
+
+        context.moveTo(start_x + 80, start_y + 80);
+        context.lineTo(start_x + 80, start_y + 90);
+        context.lineTo(start_x + 85, start_y + 90);
+        context.fill();
+        context.closePath();
+
+    }
+
+    var draw_door = function () {
+        const x = cw / 2;
+        const y = ch / 2 + 10;
+        context.beginPath();
+        context.fillStyle = 'rgb(178,64,28)'; //门梁上部分
+        context.fillRect(x - 170, y, 80, 15);
+        context.moveTo(x - 170, y);
+        context.lineTo(x - 170, y + 15);
+        context.lineTo(x - 175, y + 15);
+        context.moveTo(x - 170 + 80, y);
+        context.lineTo(x - 170 + 80, y + 15);
+        context.lineTo(x - 170 + 85, y + 15);
+        context.fill();
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = 'brown' //门梁下部分
+        context.fillRect(x - 170, y + 15, 80, 5);
+        context.moveTo(x - 170, y + 15);
+        context.lineTo(x - 175, y + 15);
+        context.lineTo(x - 170, y + 20);
+        context.moveTo(x - 90, y + 15);
+        context.lineTo(x - 85, y + 15);
+        context.lineTo(x - 90, y + 20);
+        context.fill();
+        context.closePath();
+
+        //门
+        context.beginPath();
+        context.fillStyle = 'rgb(210,159,100)';
+        context.fillRect(x - 160, y + 20, 60, 115);
+        context.fillStyle = 'rgb(238,229,222)';
+        context.fillRect(x - 160 + 15, y + 30, 30, 30);
+        context.fillStyle = 'purple';
+        context.arc(x - 160 + 15 + 30 + 5, y + 40 + 30 + 10, 5, 0, 2 * Math.PI);
+        context.fill();
+        context.closePath();
+
+        //门下的台阶
+        context.beginPath();
+        context.fillStyle = 'rgb(230,179,120)';
+        context.fillRect(x - 165, y + 135, 72, 12);
+        context.moveTo(x - 165, y + 135);
+        context.lineTo(x - 165, y + 147);
+        context.lineTo(x - 170, y + 147);
+        context.moveTo(x - 93, y + 135);
+        context.lineTo(x - 93, y + 147);
+        context.lineTo(x - 88, y + 147);
+        context.fill();
+        context.closePath();
+        context.beginPath();
+        context.fillStyle = '#CD2626';
+        context.fillRect(x - 165, y + 147, 72, 5);
+        context.moveTo(x - 165, y + 147);
+        context.lineTo(x - 165, y + 152);
+        context.lineTo(x - 170, y + 147);
+        context.moveTo(x - 93, y + 152);
+        context.lineTo(x - 93, y + 147);
+        context.lineTo(x - 88, y + 147);
+        context.fill();
+        context.closePath();
+
+
+
+    }
+
+    var draw_tree = function () {
+        const x = cw / 2 + 500;
+        const y = ch / 2 - 200;
+        start(x, y, 40, 'yellow');
+        context.beginPath();
+        context.moveTo(x, y + 30);
+        context.lineTo(x - 50, y + 80);
+        context.lineTo(x + 50, y + 80);
+        context.moveTo(x, y + 50);
+        context.lineTo(x - 100, y + 150);
+        context.lineTo(x + 100, y + 150);
+        context.moveTo(x, y + 80);
+        context.lineTo(x - 150, y + 230);
+        context.lineTo(x + 150, y + 230);
+        context.fillStyle = '#35cb68';
+        context.fill();
+        context.fillStyle = 'rgb(153,101,51)';
+        context.fillRect(x - 30, y + 230, 60, 80);
+        context.closePath();
+    }
+
+    var draw_snow = function () {
+        //画雪人
+        const snowman_x = 300;
+        const snowman_y = ch / 2 + 120;
+        const tree_x = cw / 2 + 500;
+        const tree_y = ch / 2 + 30;
+        const tree_start_x = cw / 2 + 500;
+        const tree_start_y = ch / 2 - 200;
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.arc(snowman_x, snowman_y, 40, 0, 2 * Math.PI);
+        context.arc(snowman_x, snowman_y + 80, 60, 0, 2 * Math.PI);
+        context.fill();
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = 'red';
+        context.arc(snowman_x - 12, snowman_y - 10, 5, 0, 2 * Math.PI);
+        context.arc(snowman_x + 12, snowman_y - 10, 5, 0, 2 * Math.PI);
+        context.moveTo(snowman_x, snowman_y);
+        context.lineTo(snowman_x + 60, snowman_y + 10);
+        context.lineTo(snowman_x, snowman_y + 20);
+        context.fill();
+        context.closePath();
+        //不明白为什么三个纽扣放到眼睛组里会不好使，不知道哪里出了问题
+        context.beginPath();
+        context.fillStyle = 'yellow';
+        context.arc(snowman_x, snowman_y + 50, 8, 0, 2 * Math.PI);
+        context.arc(snowman_x, snowman_y + 80, 8, 0, 2 * Math.PI);
+        context.arc(snowman_x, snowman_y + 110, 8, 0, 2 * Math.PI);
+        context.fill();
+        context.closePath();
+        context.beginPath();
+        context.strokeStyle = 'black';
+        context.lineWidth = '3';
+        context.moveTo(snowman_x + 40, snowman_y + 70);
+        context.lineTo(snowman_x + 80, snowman_y + 30);
+        context.stroke();
+        context.strokeStyle = 'black'
+        context.moveTo(snowman_x + 80, snowman_y + 30);
+        context.lineTo(snowman_x + 80 - 10, snowman_y + 30 - 10 * Math.sqrt(3));
+        context.lineTo(snowman_x + 80 + 10, snowman_y + 30 - 10 * Math.sqrt(3));
+        context.stroke();
+        context.strokeStyle = 'black';
+        context.lineWidth = '3';
+        context.moveTo(snowman_x - 40, snowman_y + 70);
+        context.lineTo(snowman_x - 80, snowman_y + 30);
+        context.stroke();
+        context.closePath();
+
+        //画积雪
+        const x = cw / 2 - 50;
+        const y = (2 * ch) / 5 - 100;
+        context.beginPath();
+        context.moveTo(x, y - 10 * Math.sqrt(3));
+        context.lineTo(x - 110 * Math.sqrt(3) - 10 * Math.sqrt(3), y + 100);
+        context.lineTo(x - 110 * Math.sqrt(3) - 10 * Math.sqrt(3), y + 30);
+        context.lineTo(x, y - 10 * Math.sqrt(3) - 70);
+        context.lineTo(x + 110 * Math.sqrt(3) + 10 * Math.sqrt(3), y + 100 - 70);
+        context.lineTo(x + 110 * Math.sqrt(3) + 10 * Math.sqrt(3), y + 100);
+        context.fillStyle = "white";
+        context.fill();
+        context.closePath();
+
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.ellipse(tree_x, tree_y + 130, 200, 50, 0, 0, Math.PI * 2); //画椭圆
+        context.fill();
+        context.closePath();
+
+        start(tree_start_x, tree_start_y, 40, 'white');
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.moveTo(tree_start_x, tree_start_y + 30);
+        context.lineTo(tree_start_x - 50, tree_start_y + 80);
+        context.lineTo(tree_start_x + 50, tree_start_y + 80);
+        context.fill();
+        context.closePath();
+
+        const start_x = cw / 2 - 50 - 40;
+        const start_y = (2 * ch) / 5 - 100 + 70;
+        const high = 80;
+        context.beginPath();
+        context.fillStyle = 'yellow';
+        context.fillRect(start_x, start_y, high, high);
+        context.closePath();
+        context.beginPath();
+        //画整体的黑色窗户上的两个东西
+        context.fillStyle = 'black';
+        context.fillRect(start_x, (2 * ch) / 5 - 100 + 105, high, high / 8);
+        context.fillRect(cw / 2 - 50 - 5, (2 * ch) / 5 - 100 + 70, 10, 80);
+        context.closePath();
+
+
+    }
+
+    var draw_house = function () {
+        const x = cw / 2 - 50;
+        const y = (2 * ch) / 5 - 100;
+        context.beginPath();
+        context.moveTo(x, y);
+        context.lineTo(x - 100 * Math.sqrt(3), y + 100);
+        context.lineTo(x - 100 * Math.sqrt(3), y + 300);
+        context.lineTo(x - 100 * Math.sqrt(3) + 200 * Math.sqrt(3), y + 300);
+        context.lineTo(x - 100 * Math.sqrt(3) + 200 * Math.sqrt(3), y + 100);
+        context.fillStyle = 'rgb(244,119,89)';
+        context.closePath();
+        context.fill();
+
+        context.beginPath();
+        context.fillStyle = 'rgb(192,172,146)';
+        context.fillRect(cw / 2 - 100 * Math.sqrt(3) - 50, (2 * ch) / 5 + 200, 200 * Math.sqrt(3), 20);
+        context.closePath();
+
+        //画房梁
+        context.beginPath();
+        context.moveTo(x, y);
+        context.lineTo(x - 110 * Math.sqrt(3), y + 110);
+        context.lineTo(x - 110 * Math.sqrt(3) - 10 * Math.sqrt(3), y + 100);
+        context.lineTo(x, y - 10 * Math.sqrt(3));
+        context.lineTo(x + 110 * Math.sqrt(3) + 10 * Math.sqrt(3), y + 100);
+        context.lineTo(x + 110 * Math.sqrt(3), y + 110);
+        context.closePath();
+        context.fillStyle = 'brown';
+        context.fill();
+
+        context.beginPath();
+        context.moveTo(x, y - 10 * Math.sqrt(3));
+        context.lineTo(x - 110 * Math.sqrt(3) - 10 * Math.sqrt(3), y + 100);
+        context.lineTo(x - 110 * Math.sqrt(3) - 10 * Math.sqrt(3), y + 30);
+        context.lineTo(x, y - 10 * Math.sqrt(3) - 70);
+        context.lineTo(x + 110 * Math.sqrt(3) + 10 * Math.sqrt(3), y + 100 - 70);
+        context.lineTo(x + 110 * Math.sqrt(3) + 10 * Math.sqrt(3), y + 100);
+        context.fillStyle = "rgb(178,64,28)";
+        context.fill();
+        context.closePath();
+        draw_window(cw / 2 - 50, (2 * ch) / 5 - 100, 80);
+        draw_door();
+        draw_tree();
+
+    }
+
+    var init = function () {
+        this.x = Math.random() * cw;
+        this.y = 0;
+        this.speedx = Math.random() * 10+1;
+        this.speedy = Math.random() * 20+1;
+        this.add = function () {
+            if(this.speedy>this.speedx)
+            {
+                  this.y += this.speedy;
+                     this.x += this.speedx;
+            }
+            else {
+                this.y += this.speedx;
+                 this.x += this.speedy;
+            }
+          
+        }
+ 
+        this.big = Math.floor(Math.random() * 10 + 3);
+    }
+    var arr = [];
+    for (var i = 0; i < 60; i++) {
+        arr.push(new init());
+    }
+    console.log(arr);
+var time = 0;
+var starts = 0;
+var i=0;
+    var show_snow = function () {
+        setInterval(function () {
+         beijing();
+    for(i=0;i<60;i++){
+          context.beginPath();
+          context.arc(arr[i].x,arr[i].y,arr[i].big,0,2*Math.PI);
+          context.fillStyle='white';
+          context.fill();
+          arr[i].add();
+          if(arr[i].x>cw-10||arr[i].y>ch-10)
+          {
+             arr[i].x=Math.random() * cw;
+             arr[i].y=0;
+          }
+          context.closePath();
+    }
+            starts++
+            if(time<90)
+            {
+                time ++;
+            }
+            else if(time>=90)
+            {
+                draw_snow();
+                
+            }
+            if(starts>30)
+            {
+                starts=0;
+                changestart();
+            }
+
+        }, 1000 / 6);
+    }
+    show_snow();
+  
+</script>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var cw = canvas.width = window.innerWidth;
+    var ch = canvas.height = window.innerHeight - 3.7;
+    var change = function (x, y) {
+        var flag;
+        flag = x;
+        x = y;
+        y = flag;
+    }
+    var init = function () {
+        this.x = Math.random() * cw;
+        this.y = 0;
+        this.speedx = (Math.random() * 2 + 1)>1.5?-(Math.random() * 2 + 1):(Math.random() * 2 + 1);
+        this.speedy = Math.random() * 2 + 1;
+        this.addspeed = function () {
+            if (this.speedy < this.speedx) {
+                change(this.speedx, this.speedy) 
+                    this.x += this.speedx;
+                    this.y += this.speedy;
+               
+            } else {
+                this.x += this.speedx;
+                this.y += this.speedy;
+            }
+        }
+
+
+    }
+    var arr = new Array();
+    for (var i = 0; i < 20; i++) {
+        arr.push(new init());
+    }
+    var j = 0;
+    var draw_line = function(){
+        for(var i=0;i<arr.length;i++)
+        {
+            var now1 = arr[i];
+            for(var j=0;j<arr.length;j++)
+            {
+                var now2 = arr[j];
+                if(Math.sqrt(Math.pow(now1.x-now2.x,2)+Math.pow(now1.y-now2.y,2))<100)
+                {
+                    context.beginPath();
+                    context.strokeStyle='#EEE5DE';
+                    context.moveTo(now1.x,now1.y);
+                    context.lineTo(now2.x,now2.y);
+                    context.stroke();
+                    context.closePath();
+                }
+    
+            }
+        }
+    }
+    var show_liandong = function () {
+        setInterval(function () {
+            context.fillStyle = 'black';
+            context.fillRect(0, 0, cw, ch);
+            for (j = 0; j < 20; j++) {
+                if (arr[j].x >= cw || arr[j].x < 0) {
+                    arr[j].speedx = -arr[j].speedx;
+
+                }
+                if (arr[j].y >= ch || arr[j].y < 0) {
+                    arr[j].speedy = -arr[j].speedy;
+                }
+
+                context.beginPath();
+                context.arc(arr[j].x, arr[j].y, 8, 0, 2 * Math.PI);
+                context.fillStyle = 'white';
+                context.fill();
+                arr[j].addspeed();
+                context.closePath();
+            }
+
+draw_line();
+        }, 1000 / 60);
+    }
+
+    show_liandong();
+</script>
+
+</html>

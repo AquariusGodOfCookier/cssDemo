@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #can{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="can"></canvas> 
+</body>
+<script>
+    var canvas = document.getElementById('can');
+    var ctx = canvas.getContext('2d'); 
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.backgroundColor="black";
+    // ctx.moveTo(300,100);
+    // ctx.lineTo(500,700);
+    // ctx.strokeStyle='red';
+    // ctx.lineWidth='10';
+    // ctx.lineCap='round';
+    // ctx.setLineDash([5,10])  //颗粒的长度，颗粒与颗粒之间的距离
+    // ctx.stroke();//画线
+
+  
+    // ctx.fillStyle='white';
+    // ctx.fillRect(100,100,300,300);//画矩形
+
+//   ctx.fillStyle='white'; //实心字
+//   ctx.font='40px 楷体';//大小，样式
+//   ctx.fillText('孙东',400,500);
+// ctx.strokeStyle="white";
+// ctx.font='120px 楷体';
+// ctx.strokeText('孙东',400,100);
+
+//    ctx.beginPath();
+//    ctx.moveTo(300,100);
+//    ctx.lineTo(700,100);
+//    ctx.lineTo(700,300);
+//    ctx.lineTo(1000,300);
+//    ctx.strokeStyle='red';
+//    ctx.lineWidth='10';
+//    ctx.stroke();
+//    ctx.closePath();
+
+// ctx.arc(300,300,200,Math.PI,2*Math.PI,true);//true是顺时针，false是逆时针
+// ctx.fillStyle='red';
+// ctx.fill();
+</script>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            border: 5px solid black;
+            border-radius: 10px;
+        }
+
+        .onepoint {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .circle {
+            height: 50px;
+            width: 50px;
+            background-color: black;
+            border-radius: 25px;
+        }
+
+        .twopoint {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .threepoint {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0px 10px;
+            box-sizing: border-box;
+        }
+
+        .fourpoint {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .fourpoint .four {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .fivepoint {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .five {
+
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .sixpoint {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .six {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .sevenpoint {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seven1 {
+
+            height: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 5px 10px;
+
+        }
+
+        .seven2 {
+            width: 100%;
+            height: 55%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .seven {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+
+        }
+
+        .circles {
+            height: 30px;
+            width: 30px;
+            background-color: black;
+            border-radius: 15px;
+        }
+
+        .circleq {
+            height: 40px;
+            width: 40px;
+            background-color: black;
+            border-radius: 20px;
+        }
+
+        .eightpoint {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .eight {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="onepoint">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="twopoint">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="threepoint">
+            <div class="circle" style="align-self:flex-start;"></div>
+            <div class="circle"></div>
+            <div class="circle" style="align-self:flex-end;"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="fourpoint">
+            <div class="four">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="four">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="box">
+        <div class="fivepoint">
+            <div class="five">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="circle"></div>
+            <div class="five">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="sixpoint">
+            <div class="six">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="six">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="sevenpoint">
+            <div class="seven1">
+                <div class="circles" style="align-self:flex-start;"></div>
+                <div class="circles" style="align-self:center;"></div>
+                <div class="circles" style="align-self:flex-end;"></div>
+            </div>
+            <div class="seven2">
+                <div class="seven">
+                    <div class="circleq"></div>
+                    <div class="circleq"></div>
+
+                </div>
+                <div class="seven">
+                    <div class="circleq"></div>
+                    <div class="circleq"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="eightpoint">
+            <div class="eight">
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+            </div>
+            <div class="eight">
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="eightpoint">
+            <div class="eight">
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+             
+            </div>
+            <div class="eight">
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+                <div class="circleq"></div>
+              
+            </div>
+            <div class="eight">
+                    <div class="circleq"></div>
+                    <div class="circleq"></div>
+                    <div class="circleq"></div>
+                    
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

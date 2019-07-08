@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>旋转相册</title>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        .my-contaniner {
+            width: 180px;
+            height: 260px;
+            margin: 200px auto;
+        }
+
+        p {
+            height: 1200px;
+            width: 1200px;
+            transform: rotateX(90deg);
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            margin-left: -600px;
+            margin-top: -600px;
+            background: -webkit-radial-gradient(center center, 600px 600px, rgba(122, 122, 122, 0.5), rgba(0, 0, 0, 0));
+
+        }
+
+        .photo {
+            width: 180px;
+            height: 260px;
+            perspective: 1200px;
+            perspective-origin: 127px -400px;
+            animation: shijiao 8s infinite ease forwards;
+            animation-delay: 4.7s;
+            animation-direction: alternate;
+
+        }
+
+        @keyframes shijiao {
+            form {
+                perspective-origin: 127px -400px;
+            }
+
+            to {
+                perspective-origin: 127px 140px;
+            }
+        }
+
+        .photo:hover {
+            animation-play-state: paused;
+        }
+
+        .container {
+            width: 180px;
+            height: 260px;
+            transform-style: preserve-3d;
+            margin: 0px auto;
+            margin-top: 300px;
+            animation: con 8s infinite linear;
+            animation-delay: 4s;
+            animation-direction: alternate;
+            position: relative;
+
+        }
+
+        .container:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes con {
+            from {
+                transform: rotateY(0deg);
+            }
+
+            to {
+                transform: rotateY(-360deg);
+            }
+
+        }
+
+        .container .img {
+            width: 180px;
+            height: 260px;
+            position: absolute;
+            border-radius: 15px;
+            box-shadow: 0px 0px 5px white;
+            background-color: transparent;
+        }
+
+        img {
+            width: 180px;
+            height: 240px;
+            margin: 10px 0px;
+            border-radius: 15px;
+
+        }
+
+        .img1 {
+
+            transform: translateZ(0px);
+            animation: img1 4s linear forwards;
+
+        }
+
+        @keyframes img1 {
+            14.2% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            28.4% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+            42.6% {
+                transform: translateX(-282.84px) translateZ(-282.84px) rotateY(-135deg);
+            }
+
+            56.8% {
+                transform: translateX(0px) translateZ(-400px) rotateY(-180deg);
+            }
+
+            71% {
+                transform: translateX(282.84px) translateZ(-282.84px) rotateY(-225deg);
+            }
+
+            85.2% {
+                transform: translateX(400px) translateZ(0px) rotateY(-270deg);
+            }
+
+            100% {
+                transform: translateX(282.84px) translateZ(282.84px) rotateY(-315deg);
+            }
+        }
+
+        .img2 {
+
+            transform: translateZ(-10px);
+            animation: img2 3.5s linear forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes img2 {
+            16.6% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            33.2% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+            49.8% {
+                transform: translateX(-282.84px) translateZ(-282.84px) rotateY(-135deg);
+            }
+
+            66.4% {
+                transform: translateX(0px) translateZ(-400px) rotateY(-180deg);
+            }
+
+            83% {
+                transform: translateX(282.84px) translateZ(-282.84px) rotateY(-225deg);
+            }
+
+            100% {
+                transform: translateX(400px) translateZ(0px) rotateY(-270deg);
+            }
+        }
+
+        .img3 {
+
+            transform: translateZ(-20px);
+            animation: img3 3s linear forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes img3 {
+            20% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            40% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+            60% {
+                transform: translateX(-282.84px) translateZ(-282.84px) rotateY(-135deg);
+            }
+
+            80% {
+                transform: translateX(0px) translateZ(-400px) rotateY(-180deg);
+            }
+
+            100% {
+                transform: translateX(282.84px) translateZ(-282.84px) rotateY(-225deg);
+            }
+
+        }
+
+        .img4 {
+
+            transform: translateZ(-30px);
+            animation: img4 2.5s linear forwards;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes img4 {
+            25% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            50% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+            75% {
+                transform: translateX(-282.84px) translateZ(-282.84px) rotateY(-135deg);
+            }
+
+            100% {
+                transform: translateX(0px) translateZ(-400px) rotateY(-180deg);
+            }
+
+        }
+
+        .img5 {
+
+            transform: translateZ(-40px);
+            animation: img5 2s linear forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes img5 {
+            33.3% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            66.6% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+            100% {
+                transform: translateX(-282.84px) translateZ(-282.84px) rotateY(-135deg);
+            }
+
+
+        }
+
+        .img6 {
+
+            transform: translateZ(-50px);
+            animation: img6 1.5s linear forwards;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes img6 {
+            50% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+            100% {
+                transform: translateX(-400px) translateZ(0px) rotateY(-90deg);
+            }
+
+        }
+
+        .img7 {
+
+            transform: translateZ(-60px);
+            animation: img7 1s linear forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes img7 {
+            100% {
+                transform: translateX(-282.84px) translateZ(282.84px) rotateY(-45deg);
+            }
+
+
+        }
+
+        .img8 {
+
+            transform: translateZ(-70px);
+            animation: img8 0.5s linear forwards;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes img8 {
+            100% {
+                transform: translateZ(400px);
+            }
+
+
+        }
+    </style>
+ <script src="../static/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div class="my-contaniner">
+        <div class="photo">
+            <div class="container">
+                <div class="img img1">
+                    <img src="../img/星之守护者1.jpg" alt="图丢了">
+                </div>
+                <div class="img img2">
+
+                    <img src="../img/星之守护者2.jpg" alt="图丢了">
+                </div>
+                <div class="img img3">
+
+                    <img src="../img/星之守护者3.jpg" alt="图丢了">
+                </div>
+                <div class="img img4">
+
+                    <img src="../img/星之守护者4.jpg" alt="图丢了">
+                </div>
+                <div class="img img5">
+
+                    <img src="../img/星之守护者5.jpg" alt="图丢了">
+                </div>
+                <div class="img img6">
+
+                    <img src="../img/星之守护者6.jpg" alt="图丢了">
+                </div>
+                <div class="img img7">
+
+                    <img src="../img/星之守护者7.jpg" alt="图丢了">
+                </div>
+                <div class="img img8">
+
+                    <img src="../img/星之守护者8.jpg" alt="图丢了">
+                </div>
+
+                <p>
+
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
